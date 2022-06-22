@@ -1,0 +1,44 @@
+/** Bike Store
+Schwin 
+Huffy
+Diamondback
+Trek
+Giant
+Cannondale
+Gary Fischer
+Santa Cruz
+Specialized
+Kona
+Yeti Bikes
+Tires
+Brakes
+Cliff Bar
+Energy Drink
+**/
+
+CREATE TABLE Bike_Store (id INTEGER PRIMARY KEY, name TEXT, sales INTEGER, price REAL, in_stock INTEGER);
+
+INSERT INTO Bike_Store VALUES (1, "Schwin", 5, 565.10, 3);
+INSERT INTO Bike_Store VALUES (2, "Huffy", 3, 255.15, 3);
+INSERT INTO Bike_Store VALUES (3, "Diamondback", 7, 325.25, 4);
+INSERT INTO Bike_Store VALUES (4, "Trek", 15, 275.05, 3);
+INSERT INTO Bike_Store VALUES (5, "Giant", 4, 155.15, 5);
+INSERT INTO Bike_Store VALUES (6, "Cannondale", 5, 222.22, 6);
+INSERT INTO Bike_Store VALUES (7, "Gary Fischer", 1, 625, 5);
+INSERT INTO Bike_Store VALUES (8, "Santa Cruz", 3, 555.55, 3);
+INSERT INTO Bike_Store VALUES (9, "Specializied", 5, 325.05, 5);
+INSERT INTO Bike_Store VALUES (10, "Kona", 2, 205.15, 7);
+INSERT INTO Bike_Store VALUES (11, "Yeti Bikes", 4, 405.67, 3);
+INSERT INTO Bike_Store VALUES (12, "Tires", 11, 35, 50);
+INSERT INTO Bike_Store VALUES (13, "Brakes", 15, 55.50, 30);
+INSERT INTO Bike_Store VALUES (14, "Cliff Bar", 115, 3.50, 100);
+INSERT INTO Bike_Store VALUES (15, "Energy Drink", 75, 2.50, 200);
+
+--display all values within the table.
+SELECT * FROM Bike_Store;
+
+--displays the most amount of units sold.
+SELECT name, price, sales FROM Bike_Store ORDER BY sales;
+
+--What item is generating the most revenue?
+SELECT name, sales * price AS revenue FROM Bike_Store GROUP BY name ORDER BY revenue DESC;
