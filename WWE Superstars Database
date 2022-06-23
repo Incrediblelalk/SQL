@@ -1,0 +1,22 @@
+CREATE TABLE WWE_Superstars (id INTEGER PRIMARY KEY, Name TEXT, Show TEXT, superstar_id INTEGER);
+
+INSERT INTO WWE_Superstars VALUES (1, "John Cena", "RAW", 1);
+INSERT INTO WWE_Superstars VALUES (2, "Randy Orton", "RAW", 2);
+INSERT INTO WWE_Superstars VALUES (3, "The Rock", "Smackdown", 3);
+INSERT INTO WWE_Superstars VALUES (4, "Stacy Kiebler", "Smackdown", 4);
+INSERT INTO WWE_Superstars VALUES (5, "Sable", "RAW", 5);
+INSERT INTO WWE_Superstars VALUES (6, "Mankind", "Smackdown", 3); 
+
+CREATE TABLE Belts (id INTEGER PRIMARY KEY, Show TEXT, Belt TEXT, WWE_Superstar_id INTEGER);
+
+INSERT INTO Belts VALUES (1, "RAW", "World Champion", 2);
+INSERT INTO Belts VALUES (2, "RAW", "Universal Champion", 1);
+INSERT INTO Belts VALUES (3, "RAW", "Womens Champion", 5);
+INSERT INTO Belts VALUES (4, "Smackdown", "Divas Champion", 4);
+INSERT INTO Belts VALUES (5, "Smackdown", "Tag Team Champion", 3);
+
+--Which superstar is on what show and what belt do they hold.
+SELECT Name, WWE_Superstars.Show, Belt FROM WWE_Superstars
+LEFT OUTER JOIN Belts ON
+WWE_Superstars.superstar_id = Belts.WWE_Superstar_id
+ORDER BY Belt;
