@@ -2,6 +2,10 @@ Dataset called chinook, which represents a digital media store and includes tabl
 
 1.  Show Customers (their full names, customer ID, and country) who are not in the US. (Hint: != or <> can be used to say "is not equal to").
 
+SELECT c.FirstName, c.LastName, c.Customerid, c.Country
+FROM customers c
+WHERE c.Country NOT IN ('USA');
+
 2.  Show only the Customers from Brazil.
 
 3.  Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
