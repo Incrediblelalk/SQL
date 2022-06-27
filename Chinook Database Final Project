@@ -8,7 +8,17 @@ WHERE c.Country NOT IN ('USA');
 
 2.  Show only the Customers from Brazil.
 
+SELECT c.FirstName, c.LastName, c.Customerid, c.Country
+FROM customers c
+WHERE c.Country IN ('Brazil');
+
 3.  Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+
+SELECT c.FirstName, c.LastName, i.InvoiceId, i.InvoiceDate, i.BillingCountry
+FROM customers c
+LEFT JOIN invoices i
+ON c.customerId = i.CustomerId
+WHERE i.BillingCountry IN ('Brazil');
 
 4.  Show the Employees who are Sales Agents.
 
