@@ -199,3 +199,11 @@ ORDER BY Strength;
 
 --Query that finds the strgonest water pokemon based on Special attack & defense.
 SELECT Name, Sp_Atk, Sp_Def, Type_1 FROM pokemon WHERE Type_1 = "Water" AND Sp_Atk > 90 AND Sp_Def > 90;
+
+--Query to find strongest pokemon that are not mega evolution nor legendaries.
+
+SELECT *
+FROM pokemon
+WHERE Name NOT LIKE '%Mega%' AND Legendary = 'False'
+ORDER BY TOTAL DESC
+Limit 10;
