@@ -1,0 +1,59 @@
+** Querying data to find the position with the most errors **
+
+SELECT pos AS Position, SUM(e) AS Total_Errors
+FROM fielding
+GROUP BY pos
+ORDER BY SUM(e) DESC;
+
+** Querying data to find the highest paid player **
+
+SELECT player.player_id, name_first, name_last, h, ab, salary
+FROM player
+JOIN batting
+ON player.player_id = batting.player_id
+JOIN salary
+ON player.player_id = salary.player_id
+GROUP BY player.player_id
+ORDER BY salary DESC;
+
+** Querying data to see what team has the most wins all time ** 
+
+SELECT *, SUM(w), SUM(l), SUM(r), SUM(ra)
+FROM team
+GROUP BY team_id
+ORDER BY SUM(w) DESC;
+
+** Query data and joining tables to see what player has the most all-star game appearances **
+
+SELECT all_star.player_id, name_first, name_last, COUNT(all_star.player_id) AS Total_Appearances
+FROM all_star
+JOIN player
+ON all_star.player_id = player.player_id
+GROUP BY all_star.player_id
+ORDER BY COUNT(all_star.player_id) DESC;
+
+** Querying data and joining tables to see what player has the most MVP awards **
+
+SELECT name_first, name_last, COUNT(player_award.player_id) AS Total_MVP
+FROM player_award
+JOIN player
+ON player_award.player_id = player.player_id
+WHERE player_award.award_id = 'Most Valuable Player'
+GROUP BY player_award.player_id
+ORDER BY COUNT(player_award.player_id) DESC;
+
+** Querying data and joining tables to see pitches's career ERA, total wins, and total strikeouts **
+
+SELECT name_first, name_last, ROUND(AVG(era),2) AS Career_ERA, SUM(w) AS Total_Wins, SUM(so) AS Total_Strikeouts
+FROM pitching
+JOIN player
+ON pitching.player_id = player.player_id
+GROUP BY pitching.player_id
+ORDER BY SUM(so) DESC;
+
+** Querying data to see what colleges players are coming from ** 
+
+SELECT college_id, COUNT(DISTINCT player_id) AS College_Count
+FROM player_college
+GROUP BY college_id
+ORDER BY COUNT(DISTINCT player_id) DESC;
